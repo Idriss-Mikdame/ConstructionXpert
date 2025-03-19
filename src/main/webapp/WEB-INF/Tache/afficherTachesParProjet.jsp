@@ -4,16 +4,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Liste des Tâches</title>
+    <title>Tâches du Projet: ${projet.nom}</title>
 </head>
 <body>
-<h1>Liste des Tâches</h1>
-<a href="tache?action=new">Ajouter une nouvelle tâche</a>
+<h1>Tâches du Projet: ${projet.nom}</h1>
+<p><strong>Description:</strong> ${projet.description}</p>
+<p><strong>Date de Début:</strong> ${projet.date_debut}</p>
+<p><strong>Date de Fin:</strong> ${projet.date_fin}</p>
+<p><strong>Budget:</strong> ${projet.budget}</p>
+
+<a href="tache?action=new&projet_id=${projet.id_PR}">Ajouter une nouvelle tâche à ce projet</a>
+
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Projet ID</th>
         <th>Description</th>
         <th>Date Début</th>
         <th>Date Fin</th>
@@ -24,7 +29,6 @@
     <c:forEach items="${taches}" var="tache">
         <tr>
             <td><c:out value="${tache.id_TA}" /></td>
-            <td><c:out value="${tache.projet_id}" /></td>
             <td><c:out value="${tache.description}" /></td>
             <td><c:out value="${tache.date_debut}" /></td>
             <td><c:out value="${tache.date_fin}" /></td>
@@ -36,5 +40,6 @@
     </c:forEach>
     </tbody>
 </table>
+<a href="projet?action=afficher">Retour à la liste des projets</a>
 </body>
 </html>

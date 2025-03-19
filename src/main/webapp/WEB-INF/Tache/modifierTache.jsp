@@ -1,16 +1,33 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: idriss
-  Date: 17/03/2025
-  Time: 16:03
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Modifier une Tâche</title>
 </head>
 <body>
+<h1>Modifier une Tâche</h1>
+<form action="tache?action=modifier" method="post">
+    <input type="hidden" name="id_TA" value="${tache.id_TA}">
+    <label for="projet_id">Projet:</label>
+    <select name="projet_id" id="projet_id">
+        <c:forEach items="${projets}" var="projet">
+            <option value="${projet.id_PR}" ${projet.id_PR == tache.projet_id ? 'selected' : ''}>${projet.nom}</option>
+        </c:forEach>
+    </select><br><br>
 
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" value="${tache.description}"><br><br>
+
+    <label for="date_debut">Date de Début:</label>
+    <input type="date" id="date_debut" name="date_debut" value="${tache.date_debut}"><br><br>
+
+    <label for="date_fin">Date de Fin:</label>
+    <input type="date" id="date_fin" name="date_fin" value="${tache.date_fin}"><br><br>
+
+    <input type="submit" value="Modifier">
+</form>
+<a href="tache?action=afficher">Retour à la liste des tâches</a>
 </body>
 </html>

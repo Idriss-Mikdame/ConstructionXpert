@@ -9,12 +9,6 @@
 <body>
 <h1>Liste des Projets</h1>
 
-<!-- Formulaire de recherche -->
-<form action="projet" method="get">
-    <input type="text" name="search" placeholder="Rechercher un projet...">
-    <input type="hidden" name="action" value="chercher">
-    <button type="submit">Rechercher</button>
-</form>
 
 <a href="projet?action=new">Ajouter un nouveau projet</a>
 
