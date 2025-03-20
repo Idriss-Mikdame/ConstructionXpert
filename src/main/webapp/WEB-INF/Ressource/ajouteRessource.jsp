@@ -11,6 +11,16 @@
     <title>Title</title>
   </head>
   <body>
-
+<form action="ressource?action=ajouter" method="post">
+  <label>ajouter un Ressource : </label><br>
+  <input type="text" name="nom" ><br>
+  <label>Types :</label><br>
+  <input type="text" name="type"><br>
+  <label>quantite :</label><br>
+  <input type="number" name="quantite" ><br>
+  <label>Nom fournisseur :</label><br>
+  <input type="text" name="fournisseur" ><br><br>
+  <input type="submit" value="Submit">
+</form>
   </body>
 </html>

@@ -1,6 +1,7 @@
 package com.example.construction.Model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Tache {
     private int id_TA;
@@ -8,6 +9,7 @@ public class Tache {
     private String description;
     private Date date_debut;
     private Date date_fin;
+    private List<Ressource> Ressources;
 
     public Tache(int id_TA, int projet_id, String description, Date date_debut, Date date_fin) {
         this.id_TA = id_TA;
@@ -62,5 +64,13 @@ public class Tache {
 
     public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
+    }
+
+    public List<Ressource> getRessources() {
+        return Ressources;
+    }
+
+    public void setRessources(List<Ressource> ressources) {
+        Ressources = ressources;
     }
 }

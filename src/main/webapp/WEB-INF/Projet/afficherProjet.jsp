@@ -33,6 +33,7 @@
             <td>
                 <a href="projet?action=trouverParid&id=${projet.id_PR}">Modifier</a>
                 <a href="projet?action=supprimer&id_PR=${projet.id_PR}">Supprimer</a>
+                <a href="tache?action=parProjet&projet_id=${projet.id_PR}">afiche</a>
             </td>
         </tr>
     </c:forEach>

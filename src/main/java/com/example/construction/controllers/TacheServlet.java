@@ -2,6 +2,7 @@
 package com.example.construction.controllers;
 
 import com.example.construction.DAO.ProjetDAO;
+import com.example.construction.DAO.RessourceDAO;
 import com.example.construction.DAO.TacheDAO;
 import com.example.construction.Model.Projet;
 import com.example.construction.Model.Tache;
@@ -20,10 +21,12 @@ import java.util.List;
 public class TacheServlet extends HttpServlet {
     private TacheDAO tacheDAO;
     private ProjetDAO projetDAO;
+    private RessourceDAO ressourceDAO ;
 
     @Override
     public void init() {
         try {
+            ressourceDAO = new RessourceDAO();
             tacheDAO = new TacheDAO();
             projetDAO = new ProjetDAO();
         } catch (SQLException | ClassNotFoundException e) {
@@ -103,7 +106,7 @@ public class TacheServlet extends HttpServlet {
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Tache tache = tacheDAO.trouverParId(id);
+        Tache tache =  tacheDAO.trouverParId(id);
 
         if (tache != null) {
             // Récupérer la liste des projets pour le dropdown
@@ -132,11 +135,15 @@ public class TacheServlet extends HttpServlet {
     private void supprimerTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Tache tache = tacheDAO.trouverParId(id);
-        int projet_id = tache.getProjet_id();
 
-        tacheDAO.supprimerTache(id);
-
-        response.sendRedirect("tache?action=parProjet&projet_id=" + projet_id);
+        if (tache != null) {
+            int projet_id = tache.getProjet_id();
+            tacheDAO.supprimerTache(id);
+            response.sendRedirect("tache?action=parProjet&projet_id=" + projet_id);
+        } else {
+            // Handle the case where the task is not found (e.g., display an error message)
+            response.sendRedirect("tache?action=afficher"); // Redirect to task list or error page
+        }
     }
 
     private void afficherTaches(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

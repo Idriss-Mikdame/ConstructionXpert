@@ -24,7 +24,7 @@ public class ConnectionJDBC {
         // Table Tache
         String TacheTable = "CREATE TABLE IF NOT EXISTS Tache ("
                 + "id_TA INT AUTO_INCREMENT PRIMARY KEY, "
-                + "description VARCHAR(255) NOT NULL, "
+                + "description VARCHAR(254) NOT NULL, "
                 + "date_debut DATE NOT NULL, "
                 + "date_fin DATE NOT NULL, "
                 + "projet_id INT NOT NULL, "
@@ -37,9 +37,8 @@ public class ConnectionJDBC {
                 + "nom VARCHAR(50) NOT NULL, "
                 + "types VARCHAR(50) NOT NULL, "
                 + "quantite DOUBLE NOT NULL, "
-                + "fournisseur VARCHAR(50) NOT NULL, "
-                + "tache_id INT NOT NULL, "
-                + "FOREIGN KEY (tache_id) REFERENCES Tache(id_TA))";
+                + "fournisseur VARCHAR(50) NOT NULL" +
+                ")";
         statement.executeUpdate(RessourceTable);
 
         // Table Tache_Ressource
@@ -47,7 +46,7 @@ public class ConnectionJDBC {
                 + "tache_ressource_id INT AUTO_INCREMENT PRIMARY KEY, "
                 + "id_ressource INT NOT NULL, "
                 + "id_tache INT NOT NULL, "
-                + "quantite DOUBLE NOT NULL, "
+                + "quantiteUtilise DOUBLE NOT NULL, "
                 + "FOREIGN KEY (id_ressource) REFERENCES Ressource(id_RESS), "
                 + "FOREIGN KEY (id_tache) REFERENCES Tache(id_TA))";
         statement.executeUpdate(Tache_Ressource);
