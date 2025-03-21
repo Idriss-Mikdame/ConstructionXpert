@@ -5,6 +5,50 @@
 </head>
 <body>
 
+<div class="wrapper">
+  <form>
+    <h1>Login</h1>
+    <div class="login-box">
+
+    </div>
+    <div>
+
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%
   if (session.getAttribute("admin") != null) {
     response.sendRedirect("index.jsp");// Redirect if already logged in

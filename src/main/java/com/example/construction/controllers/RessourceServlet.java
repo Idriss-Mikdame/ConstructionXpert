@@ -1,6 +1,8 @@
 package com.example.construction.controllers;
 
 import com.example.construction.DAO.RessourceDAO;
+import com.example.construction.DAO.TacheDAO;
+import com.example.construction.DAO.TacheRessourceDAO;
 import com.example.construction.Model.Ressource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,10 +18,14 @@ import java.util.List;
 @WebServlet("/ressource")
 public class RessourceServlet extends HttpServlet {
     private RessourceDAO ressourceDAO;
+    private TacheDAO tacheDAO;
+    private TacheRessourceDAO tacheRessourceDAO;
 
     public void init() throws ServletException {
         try {
+            tacheRessourceDAO = new TacheRessourceDAO();
             ressourceDAO = new RessourceDAO();
+            tacheDAO = new TacheDAO();
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException("Error initializing RessourceDAO", e);
         }

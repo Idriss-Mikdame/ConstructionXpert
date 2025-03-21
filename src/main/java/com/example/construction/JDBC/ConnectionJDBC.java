@@ -46,7 +46,6 @@ public class ConnectionJDBC {
                 + "tache_ressource_id INT AUTO_INCREMENT PRIMARY KEY, "
                 + "id_ressource INT NOT NULL, "
                 + "id_tache INT NOT NULL, "
-                + "quantiteUtilise DOUBLE NOT NULL, "
                 + "FOREIGN KEY (id_ressource) REFERENCES Ressource(id_RESS), "
                 + "FOREIGN KEY (id_tache) REFERENCES Tache(id_TA))";
         statement.executeUpdate(Tache_Ressource);

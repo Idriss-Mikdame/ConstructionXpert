@@ -4,8 +4,10 @@ package com.example.construction.controllers;
 import com.example.construction.DAO.ProjetDAO;
 import com.example.construction.DAO.RessourceDAO;
 import com.example.construction.DAO.TacheDAO;
+import com.example.construction.DAO.TacheRessourceDAO;
 import com.example.construction.Model.Projet;
 import com.example.construction.Model.Tache;
+import com.example.construction.Model.TacheRessource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -69,6 +71,12 @@ public class TacheServlet extends HttpServlet {
                 case "parProjet":
                     afficherTachesParProjet(request, response);
                     break;
+                case "ajouterRessource":
+                    ajouterRessourcetoTache(request, response);
+                    break;
+                case "supprimerRessource":
+                    supprimerRessourcetoTache(request, response);
+                    break;
                 default:
                     response.sendRedirect("/tache?action=afficher");
                     break;
@@ -79,11 +87,9 @@ public class TacheServlet extends HttpServlet {
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        // Récupérer la liste des projets pour le dropdown
         List<Projet> projets = projetDAO.afficherProjet();
         request.setAttribute("projets", projets);
 
-        // Récupérer le projet_id si spécifié
         String projetId = request.getParameter("projet_id");
         if (projetId != null && !projetId.isEmpty()) {
             request.setAttribute("projet_id", projetId);
@@ -109,7 +115,6 @@ public class TacheServlet extends HttpServlet {
         Tache tache =  tacheDAO.trouverParId(id);
 
         if (tache != null) {
-            // Récupérer la liste des projets pour le dropdown
             List<Projet> projets = projetDAO.afficherProjet();
             request.setAttribute("projets", projets);
             request.setAttribute("tache", tache);
@@ -161,4 +166,19 @@ public class TacheServlet extends HttpServlet {
         request.setAttribute("taches", taches);
         request.getRequestDispatcher("/WEB-INF/Tache/afficherTachesParProjet.jsp").forward(request, response);
     }
+
+    public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
+        int tache_id = Integer.parseInt(request.getParameter("id_TA"));
+        int projet_id = Integer.parseInt(request.getParameter("projet_id"));
+        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
+        tacheRessourceDAO.ajouteTacheRessource(tache_id, projet_id);
+        response.sendRedirect("tache?action=afficher");
+    }
+    private void supprimerRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
+        int tache_id = Integer.parseInt(request.getParameter("tache_id"));
+        int projet_id = Integer.parseInt(request.getParameter("projet_id"));
+        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
+        tacheRessourceDAO.supprimerResourceFromtache(tache_id, projet_id);
+    }
+
 }
