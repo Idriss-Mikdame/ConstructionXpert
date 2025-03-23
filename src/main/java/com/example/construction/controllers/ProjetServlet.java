@@ -68,7 +68,7 @@ public class ProjetServlet extends HttpServlet {
     }
 
     private void showForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/Projet/ajouteProjet.jsp").forward(request, response);
+        request.getRequestDispatcher("/Projet/ajouteProjet.jsp").forward(request, response);
     }
 
     private void ajouterProjet(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -89,7 +89,7 @@ public class ProjetServlet extends HttpServlet {
     private void afficherProjet(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Projet> projets = projetDAO.afficherProjet();
         request.setAttribute("projets", projets);
-        request.getRequestDispatcher("/WEB-INF/Projet/afficherProjet.jsp").forward(request, response);
+        request.getRequestDispatcher("/Projet/afficherProjet.jsp").forward(request, response);
     }
 
     private void modifierProjet(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -118,7 +118,7 @@ public class ProjetServlet extends HttpServlet {
 
         if (projetParid != null) {
             request.setAttribute("projetParid", projetParid);
-            request.getRequestDispatcher("/WEB-INF/Projet/modifierProjet.jsp").forward(request, response);
+            request.getRequestDispatcher("/Projet/modifierProjet.jsp").forward(request, response);
         } else {
             response.sendRedirect("projet?action=afficher");
         }

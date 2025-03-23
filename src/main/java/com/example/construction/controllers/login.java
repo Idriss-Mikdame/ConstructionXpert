@@ -26,7 +26,7 @@ public class login extends HttpServlet {
             response.sendRedirect("index.jsp");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/authentifiation/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/authentifiation/login.jsp").forward(request, response);
     }
 
 
@@ -39,7 +39,7 @@ public class login extends HttpServlet {
         if (username == null || username.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             msg = "Username and password are required.";
             request.setAttribute("msg", msg);
-            request.getRequestDispatcher("/WEB-INF/authentifiation/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/authentifiation/login.jsp").forward(request, response);
             return;
         }
 
@@ -55,7 +55,7 @@ public class login extends HttpServlet {
         } else {
             msg = "Invalid username or password.";
             request.setAttribute("msg", msg);
-            request.getRequestDispatcher("/WEB-INF/authentifiation/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/authentifiation/login.jsp").forward(request, response);
         }
     }
 }

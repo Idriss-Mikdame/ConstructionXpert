@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../../img.jpg') no-repeat ;
+    background: url('../img.jpg') no-repeat ;
     background-size: cover;
     background-position: center;
   }
@@ -32,6 +32,7 @@
   .wrapper h1{
     font-size: 27px;
     text-align: center;
+    color: #080606;
   }
   .wrapper .input-box{
     position: relative;

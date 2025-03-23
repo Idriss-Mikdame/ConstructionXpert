@@ -95,7 +95,7 @@ public class TacheServlet extends HttpServlet {
             request.setAttribute("projet_id", projetId);
         }
 
-        request.getRequestDispatcher("/WEB-INF/Tache/ajouteTache.jsp").forward(request, response);
+        request.getRequestDispatcher("/Tache/ajouteTache.jsp").forward(request, response);
     }
 
     private void ajouterTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -118,7 +118,7 @@ public class TacheServlet extends HttpServlet {
             List<Projet> projets = projetDAO.afficherProjet();
             request.setAttribute("projets", projets);
             request.setAttribute("tache", tache);
-            request.getRequestDispatcher("/WEB-INF/Tache/modifierTache.jsp").forward(request, response);
+            request.getRequestDispatcher("/Tache/modifierTache.jsp").forward(request, response);
         } else {
             response.sendRedirect("tache?action=afficher");
         }
@@ -154,7 +154,7 @@ public class TacheServlet extends HttpServlet {
     private void afficherTaches(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Tache> taches = tacheDAO.afficherTaches();
         request.setAttribute("taches", taches);
-        request.getRequestDispatcher("/WEB-INF/Tache/afficherTache.jsp").forward(request, response);
+        request.getRequestDispatcher("/Tache/afficherTache.jsp").forward(request, response);
     }
 
     private void afficherTachesParProjet(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -164,7 +164,7 @@ public class TacheServlet extends HttpServlet {
 
         request.setAttribute("projet", projet);
         request.setAttribute("taches", taches);
-        request.getRequestDispatcher("/WEB-INF/Tache/afficherTachesParProjet.jsp").forward(request, response);
+        request.getRequestDispatcher("/Tache/afficherTachesParProjet.jsp").forward(request, response);
     }
 
     public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {

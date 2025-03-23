@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Title</title>
 </head>
 <style>
     * {
@@ -93,45 +94,90 @@
         font-size: 15px;
     }
 
-    header {
-        width: 100%;
-        height: 93vh;
-        background: url('img2.jpg') no-repeat;
-        background-size: cover;
-        font-family: sans-serif;
-    }
 
-    .text {
+    header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 92vh;
+        background-image:  url('/img/img5.jpg');
+        background-size: cover ;
+    }
+    .container{
+
         max-width: 650px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        padding: 20px;
+        margin: 0px 28px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(0, 0,0, 0.2);
+        box-shadow: 0 15px 20px rgba(0, 0,0, 0.6);
+    }
+    h2{
+        font-size: 26px;
+        font-weight: bold;
         text-align: center;
+        color: #fff;
+        padding-bottom: 10px;
+        border-bottom: 3px solid rgb(255, 255, 255);
+        text-transform: uppercase;
+        font-family: initial;
+    }
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    .input-box{
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        padding-bottom: 15px;
+    }
+
+    .input-box label{
+        width: 95%;
+        color: #fff;
+        font-weight: bold;
+        margin: 5px 0px;
+    }
+    .input-box input{
+        height: 40px;
+        width: 95%;
+        padding: 0 10px;
+        border-radius: 8px;
+        border: 1px solid #fff;
+        outline: none;
+    }
+    .input-box input:is(:focus,:valid){
+        box-shadow: 0 3px 5px rgba(0, 0,0, 0.2)  ;
+    }
+    .button-container{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+    .button-container button{
+        margin-top: 10px;
+        background-color: black;
         color: white;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        padding:  8px  27px;;
+        border-radius: 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 1s;
+        margin-left: 300px
     }
-
-    .text span {
-        letter-spacing: 5px;
-    }
-
-    .text h1 {
-        font-size: 3.5em;
-    }
-
-    .text a {
-        text-decoration: none;
-        background: rgb(0, 0, 0);
-        padding: 10px 50px;
-        letter-spacing: 5px;
-        color: white;
-        transition-duration: 1s;
-
-    }
-
-    .text a:hover {
-        background-color: azure;
-        color: black;
+    .button-container button:hover{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0)
     }
 </style>
 <body>
@@ -169,18 +215,35 @@
         </ul>
     </div>
 </nav>
-
-
 <header>
-
-    <SEction class="text">
-        <span>Bienvenue</span>
-        <h1>construction de votre maison</h1><br>
-        <a href="projet?action=afficher">Projet</a>
-        <a href="tache?action=afficher">Tache</a>
-        <a href="ressource?action=afficher">Ressource</a>
-    </SEction>
+    <div class="container">
+        <form action="ressource" method="post">
+            <input type="hidden" name="action" value="modifier">
+            <input type="hidden" name="id_RESS" value="${ressource.id_RESS}">
+        <h2 >Modifier une Ressource</h2>
+   <div class="content">
+        <div class="input-box">
+            <label>Nom:</label>
+            <input type="text"  name="nom" value="${ressource.nom}" required>
+        </div>
+       <div class="input-box">
+           <label>Type:</label>
+           <input type="text"  name="types" value="${ressource.types}" required>
+       </div>
+       <div class="input-box">
+           <label >Quantité:</label>
+           <input type="number"   name="quantite" value="${ressource.quantite}" required>
+       </div>
+       <div class="input-box">
+           <label >Fournisseur:</label>
+           <input type="text"  name="fournisseur" value="${ressource.fournisseur}" required>
+       </div>
+       <div class="button-container">
+           <button type="submit">Modifier</button>
+        </div>
+</div>
+    </form>
+    </div>
 </header>
-
 </body>
 </html>

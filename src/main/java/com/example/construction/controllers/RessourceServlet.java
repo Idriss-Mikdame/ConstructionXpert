@@ -71,7 +71,7 @@ public class RessourceServlet extends HttpServlet {
     }
 
     private void afficherForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.getRequestDispatcher("/WEB-INF/Ressource/ajouteRessource.jsp").forward(request,response);
+    request.getRequestDispatcher("/Ressource/ajouteRessource.jsp").forward(request,response);
     }
     private void ajouterRessource(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         String nom = request.getParameter("nom");
@@ -102,12 +102,12 @@ public class RessourceServlet extends HttpServlet {
 
         System.out.println(ressourceList);
         request.setAttribute("ressourceList", ressourceList);
-        request.getRequestDispatcher("/WEB-INF/Ressource/afficherRessource.jsp").forward(request, response);
+        request.getRequestDispatcher("/Ressource/afficherRessource.jsp").forward(request, response);
     }
     private void afficherRessourceParid(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id_RESS = Integer.parseInt(request.getParameter("id_RESS"));
         Ressource ressource = ressourceDAO.afficherRessourceParid(id_RESS);
         request.setAttribute("ressource", ressource);
-        request.getRequestDispatcher("/WEB-INF/Ressource/modifierRessource.jsp").forward(request,response);
+        request.getRequestDispatcher("/Ressource/modifierRessource.jsp").forward(request,response);
     }
 }

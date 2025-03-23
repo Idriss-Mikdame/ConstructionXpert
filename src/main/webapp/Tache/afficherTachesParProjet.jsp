@@ -7,61 +7,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tâches du Projet: ${projet.nom}</title>
     <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
-            --accent-color: #e74c3c;
-            --light-gray: #f5f5f5;
-            --medium-gray: #e0e0e0;
-            --dark-gray: #333;
-            --text-color: #444;
-            --shadow: 0 2px 5px rgba(0,0,0,0.1);
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: ;
+        .navbar {
+            background: white;
+            font-family: calibri;
+            padding-right: 15px;
+            padding-left: 15px;
         }
-        .navbar{
-            background: crimson;font-family: calibri;padding-right: 15px;padding-left: 15px; ;
-        }
-        .navdiv{
+
+        .navdiv {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .logo{
+
+        .logo {
             font-size: 35px;
             font-weight: 600;
         }
-        .logo a{
-            color: white;
+
+        .logo a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
         }
-        li{
+
+        .menu {
             list-style: none;
-            display:inline-block;
+            display: flex;
         }
-        li a{
-            color: white;
+
+        .menu li {
+            position: relative;
+            padding: 10px; /* Keep the padding */
+        }
+
+        .menu li .link  {
+            color: rgb(0, 0, 0);
             font-size: 15px;
             font-weight: 600;
-            margin-right: 25px;
-        }
-        button{
-            background-color: black;
-            margin-left: 10px;
-            border-radius: 10px;
+            text-decoration: none;
             padding: 10px;
-            width: 90px;
+            display: block; /* Make the link fill the li */
         }
-        button a{
+
+        .menu li:hover .submenu {
+            display: block;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            list-style: none;
+            padding: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1; /* Ensure submenu appears on top */
+        }
+
+        .submenu li {
+            padding: 5px 10px;
+        }
+
+        .submenu li a {
+            white-space: nowrap;
+            display: block; /* Ensure link fills the list item */
+        }
+
+        ul button {
+            background-color: rgb(0, 0, 0);
+            margin-left: 30px;
+            margin-top: 8px;
+            border-radius: 10px;
+            padding: 5px;
+            width: 140px;
+            border: none;
+
+        }
+
+        button a {
+            text-decoration: none;
             color: white;
             font-weight: 600;
             font-size: 15px;
         }
-        body {
+
+
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 92vh;
+            background-image:  url('../img/img5.jpg');
+            background-size: cover ;
+        }
+        header {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
@@ -105,13 +149,7 @@
             background-color: var(--secondary-color);
         }
 
-        .button-accent {
-            background-color: var(--accent-color);
-        }
 
-        .button-accent:hover {
-            background-color: #c0392b;
-        }
 
         table {
             width: 100%;
@@ -231,15 +269,38 @@
 <nav class="navbar">
     <div class="navdiv">
         <div class="logo"><a href="index.jsp">ConstructionXpert</a></div>
-        <ul>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="projet?action=new">Projet</a></li>
-            <li><a href="tache?action=new">Tache</a></li>
-            <li><a href="ressource?action=new">Ressource</a></li>
-            <button><a href="logout">Logout</a></button>
+        <ul class="menu">
+            <li>
+                <a class="link" href="index.jsp">Home</a>
+            </li>
+            <li>
+                <a class="link" href="projet?action=new">Projet</a>
+                <ul class="submenu">
+                    <li><a class="link" href="projet?action=new">Ajouter</a></li>
+                    <li><a class="link" href="projet?action=afficher">Afficher</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="link" href="tache?action=new">Tache</a>
+                <ul class="submenu">
+                    <li><a class="link" href="tache?action=new">Ajouter</a></li>
+                    <li><a class="link" href="tache?action=afficher">Afficher</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="link" href="ressource?action=new">Ressource</a>
+                <ul class="submenu">
+                    <li><a class="link" href="ressource?action=new">Ajouter</a></li>
+                    <li><a class="link" href="ressource?action=afficher">Afficher</a></li>
+                </ul>
+            </li>
+            <li>
+                <button><a href="logout">Logout</a></button>
+            </li>
         </ul>
     </div>
 </nav>
+<header>
 <h1>Tâches du Projet: ${projet.nom}</h1>
 
 <div class="project-info">
@@ -282,5 +343,6 @@
     <a href="tache?action=afficher">Afficher toutes les tâches</a>
     <a href="tache?action=new">Ajouter un nouvelle tâches</a>
 </div>
+</header>
 </body>
 </html>

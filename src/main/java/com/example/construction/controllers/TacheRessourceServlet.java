@@ -83,7 +83,7 @@ public class TacheRessourceServlet extends HttpServlet {
         }
         request.setAttribute("tacheRessource", tacheRessource);
         request.setAttribute("tache",taches);
-        request.getRequestDispatcher("/WEB-INF/TacheRessource/TacheRessource.jsp").forward(request,response);
+        request.getRequestDispatcher("/TacheRessource/TacheRessource.jsp").forward(request,response);
 
     }
 
@@ -107,7 +107,7 @@ public class TacheRessourceServlet extends HttpServlet {
     List<Ressource> ressources = ressourceDAO.afficherRessource();
     request.setAttribute("taches", taches);
     request.setAttribute("ressources", ressources);
-    request.getRequestDispatcher("/WEB-INF/TacheRessource/ajouterTacheRessource.jsp").forward(request,response);
+    request.getRequestDispatcher("/TacheRessource/ajouterTacheRessource.jsp").forward(request,response);
     }
 
     private void ListTacheRessource(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -115,6 +115,6 @@ public class TacheRessourceServlet extends HttpServlet {
         List<Ressource> ressources = ressourceDAO.afficherRessource();
         request.setAttribute("taches", taches);
         request.setAttribute("ressources", ressources);
-        request.getRequestDispatcher("/WEB-INF/TacheRessource/afficherTacheRessource.jsp").forward(request,response);
+        request.getRequestDispatcher("/TacheRessource/afficherTacheRessource.jsp").forward(request,response);
     }
 }
