@@ -106,6 +106,7 @@
             width: 100%;
             height: 100vh;
 
+
             padding: 0 20px;
             background-image: url('https://karidesignbuild.com/wp-content/uploads/2024/01/project_scope.jpg');
             background-size: cover;

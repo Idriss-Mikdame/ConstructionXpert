@@ -16,7 +16,7 @@ public class login extends HttpServlet {
     private final HashMap<String, String> adminCredentials = new HashMap<>(); // Make it final
 
     public login() {
-        adminCredentials.put("admin", "admin123");
+        adminCredentials.put("admin", "123");
     }
 
     @Override

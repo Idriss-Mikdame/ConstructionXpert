@@ -72,7 +72,7 @@ public class TacheServlet extends HttpServlet {
                     afficherTachesParProjet(request, response);
                     break;
                 case "ajouterRessource":
-                    ajouterRessourcetoTache(request, response);
+//                    ajouterRessourcetoTache(request, response);
                     break;
                 case "supprimerRessource":
                     supprimerRessourcetoTache(request, response);
@@ -167,18 +167,18 @@ public class TacheServlet extends HttpServlet {
         request.getRequestDispatcher("/Tache/afficherTachesParProjet.jsp").forward(request, response);
     }
 
-    public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
-        int tache_id = Integer.parseInt(request.getParameter("id_TA"));
-        int projet_id = Integer.parseInt(request.getParameter("projet_id"));
-        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
-        tacheRessourceDAO.ajouteTacheRessource(tache_id, projet_id);
-        response.sendRedirect("tache?action=afficher");
-    }
+//    public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
+//        int tache_id = Integer.parseInt(request.getParameter("id_TA"));
+//        int ressource_id = Integer.parseInt(request.getParameter("projet_id"));
+//        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
+//        tacheRessourceDAO.ajouteTacheRessource(tache_id, ressource_id);
+//        response.sendRedirect("tache?action=afficher");
+//    }
     private void supprimerRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
         int tache_id = Integer.parseInt(request.getParameter("tache_id"));
-        int projet_id = Integer.parseInt(request.getParameter("projet_id"));
+        int ressource_id = Integer.parseInt(request.getParameter("projet_id"));
         TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
-        tacheRessourceDAO.supprimerResourceFromtache(tache_id, projet_id);
+        tacheRessourceDAO.supprimerResourceFromtache(tache_id, ressource_id);
     }
 
 }

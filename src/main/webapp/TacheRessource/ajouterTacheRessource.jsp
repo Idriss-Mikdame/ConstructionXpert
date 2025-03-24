@@ -12,14 +12,13 @@
     <h1>Ajouter une Ressource à une Tâche</h1>
 
     <form action="tacheRessource?action=ajouterTacheRessource" method="post">
+
+
         <div class="form-group">
             <label for="id_tache">Tâche :</label>
-            <select class="form-control" id="id_tache" name="id_tache" required>
-                <option value="">Sélectionnez une tâche</option>
-                <c:forEach items="${taches}" var="tache">
-                    <option value="${tache.id}">${tache.nom} - ${tache.description}</option>
-                </c:forEach>
-            </select>
+            <input type="text" class="form-control" id="id_tache" name="id_tache" value="${tache.id_TA}" readonly>
+            <input type="hidden" name="id_tache" value="${tache.id_TA}">
+            <p>${tache.description}</p>
         </div>
 
         <div class="form-group">
@@ -27,7 +26,7 @@
             <select class="form-control" id="id_ressource" name="id_ressource" required>
                 <option value="">Sélectionnez une ressource</option>
                 <c:forEach items="${ressources}" var="ressource">
-                    <option value="${ressource.id}">${ressource.nom} - ${ressource.type}</option>
+                    <option value="${ressource.id_RESS}">${ressource.nom} - ${ressource.types}</option>
                 </c:forEach>
             </select>
         </div>
