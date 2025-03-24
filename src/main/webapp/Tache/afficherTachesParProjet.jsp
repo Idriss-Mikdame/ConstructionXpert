@@ -11,13 +11,18 @@
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        body {
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation Bar */
         .navbar {
-            background: white;
-            font-family: calibri;
-            padding-right: 15px;
-            padding-left: 15px;
+            background-color: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
         }
 
         .navdiv {
@@ -27,32 +32,32 @@
         }
 
         .logo {
-            font-size: 35px;
+            font-size: 22px;
             font-weight: 600;
         }
 
         .logo a {
-            color: rgb(0, 0, 0);
+            color: #000;
             text-decoration: none;
         }
 
         .menu {
             list-style: none;
             display: flex;
+            align-items: center;
         }
 
         .menu li {
             position: relative;
-            padding: 10px; /* Keep the padding */
+            margin: 0 5px;
         }
 
-        .menu li .link  {
-            color: rgb(0, 0, 0);
-            font-size: 15px;
-            font-weight: 600;
+        .menu li a.link {
+            color: #000;
+            font-size: 14px;
             text-decoration: none;
             padding: 10px;
-            display: block; /* Make the link fill the li */
+            display: block;
         }
 
         .menu li:hover .submenu {
@@ -64,136 +69,150 @@
             position: absolute;
             background: white;
             list-style: none;
-            padding: 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1; /* Ensure submenu appears on top */
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
         }
 
         .submenu li {
-            padding: 5px 10px;
+            margin: 0;
         }
 
         .submenu li a {
-            white-space: nowrap;
-            display: block; /* Ensure link fills the list item */
+            padding: 8px 15px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+            display: block;
         }
 
         ul button {
-            background-color: rgb(0, 0, 0);
-            margin-left: 30px;
-            margin-top: 8px;
-            border-radius: 10px;
-            padding: 5px;
-            width: 140px;
+            background-color: #000;
             border: none;
-
+            border-radius: 4px;
+            padding: 8px 15px;
+            margin-left: 10px;
         }
 
         button a {
             text-decoration: none;
             color: white;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
 
+        /* Content Container */
+        .container {
+            width: 100%;
+            height: 100vh;
 
-        header{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 92vh;
-            background-image:  url('../img/img5.jpg');
-            background-size: cover ;
+            padding: 0 20px;
+            background-image: url('https://karidesignbuild.com/wp-content/uploads/2024/01/project_scope.jpg');
+            background-size: cover;
         }
-        header {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f9f9f9;
+
+        .project-details {
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(255, 35, 35, 0.1);
         }
 
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--medium-gray);
+        .project-details h1 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            font-family:   'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         .project-info {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            font-style:italic;
+            color: #ffffff;
+            font-weight: bolder;
         }
 
         .project-info p {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: var(--secondary-color);
-        }
-
-
-
-        table {
+        /* Task Table */
+        .task-table {
+            background: rgba(0, 0, 0, 0.2);
             width: 100%;
             border-collapse: collapse;
-            background-color: white;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        th {
-            background-color: var(--primary-color);
+        .task-table th {
+            background-color: #000;
             color: white;
             padding: 12px 15px;
             text-align: left;
+            font-weight: 500;
         }
 
-        td {
+        .task-table td {
+            font-weight: 700;
+            color: white;
             padding: 12px 15px;
-            border-bottom: 1px solid var(--medium-gray);
         }
 
-        tr:last-child td {
+        .task-table tr:last-child td {
             border-bottom: none;
         }
 
-        tr:nth-child(even) {
-            background-color: var(--light-gray);
+        .task-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Buttons and Actions */
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #008bec;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
         }
 
         .action-links a {
-            margin-right: 10px;
-            color: var(--primary-color);
+            display: inline-block;
+            padding: 6px 12px;
+            margin-right: 5px;
+            border-radius: 4px;
             text-decoration: none;
+            font-size: 14px;
         }
 
-        .action-links a:hover {
-            text-decoration: underline;
+        .action-edit {
+            background-color: #f39c12;
+            color: white;
         }
 
-        .action-links a.delete {
-            color: var(--accent-color);
+        .action-delete {
+            background-color: #e74c3c;
+            color: white;
         }
+
 
         .footer-links {
             margin-top: 20px;
@@ -202,66 +221,13 @@
         }
 
         .footer-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Form styles */
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        select {
-            width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid var(--medium-gray);
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
-            }
+            background-color: black;
+            color: #eaecec;
+            text-decoration: none;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: 1s;
         }
     </style>
 </head>
@@ -300,19 +266,19 @@
         </ul>
     </div>
 </nav>
-<header>
-<h1>Tâches du Projet: ${projet.nom}</h1>
-
-<div class="project-info">
-    <p><strong>Description:</strong> ${projet.description}</p>
-    <p><strong>Date de Début:</strong> ${projet.date_debut}</p>
-    <p><strong>Date de Fin:</strong> ${projet.date_fin}</p>
-    <p><strong>Budget:</strong> ${projet.budget}</p>
+<div class="container">
+<div class="project-details">
+    <h1>Tâches du Projet: ${projet.nom}</h1>
+    <div class="project-info">
+        <p><strong>Description:</strong> ${projet.description}</p>
+        <p><strong>Budget:</strong> ${projet.budget} DH</p>
+        <p><strong>Date de Début:</strong> ${projet.date_debut}</p>
+        <p><strong>Date de Fin:</strong> ${projet.date_fin}</p>
+    </div>
 </div>
+<a href="tache?action=new&projet_id=${projet.id_PR}" class="btn btn-primary">Ajouter une nouvelle tâche à ce projet</a>
 
-<a href="tache?action=new&projet_id=${projet.id_PR}" class="button">Ajouter une nouvelle tâche à ce projet</a>
-
-<table>
+<table class="task-table">
     <thead>
     <tr>
         <th>ID</th>
@@ -330,8 +296,8 @@
             <td><c:out value="${tache.date_debut}" /></td>
             <td><c:out value="${tache.date_fin}" /></td>
             <td class="action-links">
-                <a href="tache?action=edit&id=${tache.id_TA}">Modifier</a>
-                <a href="tache?action=supprimer&id=${tache.id_TA}" class="delete">Supprimer</a>
+                <a href="tache?action=edit&id=${tache.id_TA}" class="action-edit">Modifier</a>
+                <a href="tache?action=supprimer&id=${tache.id_TA}" class="action-delete">Supprimer</a>
             </td>
         </tr>
     </c:forEach>
@@ -343,6 +309,6 @@
     <a href="tache?action=afficher">Afficher toutes les tâches</a>
     <a href="tache?action=new">Ajouter un nouvelle tâches</a>
 </div>
-</header>
+</div>
 </body>
 </html>

@@ -99,89 +99,101 @@
             font-size: 15px;
         }
 
-        /* Content section styles */
-        .content {
-            padding: 30px;
+        header{
+            background-image: url('https://karidesignbuild.com/wp-content/uploads/2024/01/project_scope.jpg');
+            background-size: cover;
         }
 
-        .content-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .container {
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+
         }
 
         h1 {
-            color: #333;
-            font-size: 28px;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 20px;
         }
-
-        .add-btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 5px;
+        a.add-btn {
             text-decoration: none;
-            font-weight: 600;
+            background-color: #0666f7;
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        a.add-btn:hover {
+            background-color: #357abd;
         }
 
-        .add-btn:hover {
-            background-color: #0069d9;
-        }
-
-        table {
+        .project-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            border: 1px solid #ddd;
+            margin-bottom: 20px;
         }
 
-        th, td {
-            padding: 12px;
+        .project-table th {
+            background-color: #000;
+            color: white;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            padding: 12px 15px;
         }
 
-        th {
-            background-color: #f8f8f8;
-            font-weight: 600;
+        .project-table td {
+            padding: 12px 15px;
+            border-bottom: 5px solid #040202;
+            color: white;
+            font-weight: 600
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
-        }
 
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
 
-        .btn-edit, .btn-delete {
-            padding: 5px 10px;
+        .btn {
+            padding: 6px 12px;
+            border: none;
             border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        .add-project{
+            display: flex;
+            justify-content: end;
+        }
+        .btn-primary {
+            background-color: #0666f7;
+            color: rgb(255, 255, 255);
         }
 
-        .btn-edit {
-            background-color: #ffc107;
-            color: #212529;
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
+        .btn-danger {
+            background-color: #e74c3c;
             color: white;
         }
 
-        .empty-message {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            text-align: center;
-            color: #6c757d;
+        .btn-primary:hover {
+            background-color: #357abd;
         }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .add-project {
+            margin-bottom: 20px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -220,45 +232,45 @@
     </div>
 </nav>
 
-<div class="content">
-    <div class="content-header">
+<header>
+    <div class="container">
         <h1>Liste des Ressources</h1>
-        <a href="ressource?action=new" class="add-btn">Ajouter une nouvelle ressource</a>
-    </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Type</th>
-            <th>Quantité</th>
-            <th>Fournisseur</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="ressource" items="${ressourceList}">
-            <tr>
-                <td>${ressource.id_RESS}</td>
-                <td>${ressource.nom}</td>
-                <td>${ressource.types}</td>
-                <td>${ressource.quantite}</td>
-                <td>${ressource.fournisseur}</td>
-                <td class="actions">
-                    <a href="ressource?action=TrouverRessourceParid&id_RESS=${ressource.id_RESS}" class="btn-edit">Modifier</a>
-                    <a href="ressource?action=supprimer&id_RESS=${ressource.id_RESS}" class="btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ressource?')">Supprimer</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+        <div class="add-project">
 
-    <c:if test="${empty ressourceList}">
-        <div class="empty-message">
-            Aucune ressource disponible.
+            <a href="ressource?action=new" class="add-btn">+ Ajouter une nouvelle ressource</a>
         </div>
-    </c:if>
-</div>
+
+        <table class="project-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Quantité</th>
+                <th>Fournisseur</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="ressource" items="${ressourceList}">
+                <tr>
+                    <td>${ressource.id_RESS}</td>
+                    <td>${ressource.nom}</td>
+                    <td>${ressource.types}</td>
+                    <td>${ressource.quantite}</td>
+                    <td>${ressource.fournisseur}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><a href="ressource?action=TrouverRessourceParid&id_RESS=${ressource.id_RESS}" class="btn-edit">Modifier</a></button>
+                            <button class="btn btn-danger"><a href="ressource?action=supprimer&id_RESS=${ressource.id_RESS}" >Supprimer</a></button>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</header>
 </body>
 </html>

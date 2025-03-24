@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../img.jpg') no-repeat ;
+    background: url('https://i.pinimg.com/736x/e3/84/49/e38449e406a7fb6e092b948e9827b9ec.jpg') no-repeat ;
     background-size: cover;
     background-position: center;
   }

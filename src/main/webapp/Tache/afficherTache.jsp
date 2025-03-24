@@ -96,90 +96,90 @@
             font-size: 15px;
         }
 
-        header {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f9f9f9;
+        header{
+            background-image: url('https://karidesignbuild.com/wp-content/uploads/2024/01/project_scope.jpg');
+            background-size: cover;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+
         }
 
         h1 {
-            color: var(--primary-color);
+            color: #ffffff;
+            margin-top: 0;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--medium-gray);
         }
 
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        table {
+        .project-table {
             width: 100%;
             border-collapse: collapse;
-            background-color: white;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        th {
-            background-color: var(--primary-color);
+        .project-table th {
+            background-color: #000;
             color: white;
-            padding: 12px 15px;
             text-align: left;
-        }
-
-        td {
             padding: 12px 15px;
-            border-bottom: 1px solid var(--medium-gray);
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        .project-table td {
+            padding: 12px 15px;
+            border-bottom: 5px solid #040202;
+            color: white;
+            font-weight: 600
         }
 
-        tr:nth-child(even) {
-            background-color: var(--light-gray);
+
+
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        .add-project{
+            display: flex;
+            justify-content: end;
+        }
+        .btn-primary {
+            background-color: #0666f7;
+            color: rgb(255, 255, 255);
         }
 
-        .action-links a {
-            margin-right: 10px;
-            color: var(--primary-color);
-            text-decoration: none;
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
         }
 
-        .action-links a:hover {
-            text-decoration: underline;
+        .btn-primary:hover {
+            background-color: #357abd;
         }
 
-        .action-links a.delete {
-            color: var(--accent-color);
+        .btn-danger:hover {
+            background-color: #c0392b;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
         }
+
+        .add-project {
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -217,36 +217,44 @@
         </ul>
     </div>
 </nav>
+
 <header>
-<h1>Liste des Tâches</h1>
+    <div class="container">
+        <h1>Liste des Tâches</h1>
 
-<a href="tache?action=new" class="button">Ajouter une nouvelle tâche</a>
 
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Date Début</th>
-        <th>Date Fin</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${taches}" var="tache">
-        <tr>
-            <td><c:out value="${tache.id_TA}" /></td>
-            <td><c:out value="${tache.description}" /></td>
-            <td><c:out value="${tache.date_debut}" /></td>
-            <td><c:out value="${tache.date_fin}" /></td>
-            <td class="action-links">
-                <a href="tache?action=edit&id=${tache.id_TA}">Modifier</a>
-                <a href="tache?action=supprimer&id=${tache.id_TA}" class="delete">Supprimer</a>
-            </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+        <div class="add-project">
+            <button class="btn btn-primary"><a href="tache?action=new" class="button">+ Ajouter une nouvelle tâche</a></button>
+        </div>
+
+        <table class="project-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Date Début</th>
+                <th>Date Fin</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${taches}" var="tache">
+                <tr>
+                    <<td><c:out value="${tache.id_TA}" /></td>
+                    <td><c:out value="${tache.description}" /></td>
+                    <td><c:out value="${tache.date_debut}" /></td>
+                    <td><c:out value="${tache.date_fin}" /></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary"><a href="tache?action=edit&id=${tache.id_TA}">Modifier</a></button>
+                            <button class="btn btn-danger"><a href="tache?action=supprimer&id=${tache.id_TA}" class="delete">Supprimer</a></button>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </header>
 </body>
 </html>

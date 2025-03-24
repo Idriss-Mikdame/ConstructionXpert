@@ -97,7 +97,7 @@
         }
 
         header{
-            background-image: url('../img6.jpg');
+            background-image: url('https://karidesignbuild.com/wp-content/uploads/2024/01/project_scope.jpg');
             background-size: cover;
         }
 
