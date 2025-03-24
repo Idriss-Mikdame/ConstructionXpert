@@ -1,6 +1,6 @@
 <img width="550" alt="Capture d'écran 2025-03-22 091143" src="https://github.com/user-attachments/assets/a06d9458-a588-451e-9fc7-af5cfbe59d23" />
 <img width="680" alt="Capture d'écran 2025-03-22 091043" src="https://github.com/user-attachments/assets/50153c05-14b5-435d-98fe-eae4600a678c" />
-<img width="691" alt="Capture d'écran 2025-03-22 090949" src="https://github.com/user-attachments/assets/fc56bc7e-5ef5-462e-94bf-65fae3e05522" />
+<img width="719" alt="Capture d'écran 2025-03-23 140954" src="https://github.com/user-attachments/assets/5592e94e-8155-4e0c-8cd0-b8ba8a2d88dc" />
 📌 Objectif de l'application
 L'application permettra aux équipes de construction de créer, gérer et suivre des projets, en assignant des tâches aux membres de l'équipe et en gérant les ressources nécessaires. Elle fournira une interface intuitive pour visualiser, mettre à jour et supprimer des projets et leurs tâches associées.
 
