@@ -86,7 +86,7 @@
 
   <%
     if (session.getAttribute("admin") != null) {
-      response.sendRedirect("index.jsp");// Redirect if already logged in
+      response.sendRedirect("index.jsp");
       response.sendRedirect("projet?action=new");
       response.sendRedirect("tache?action=new");
       response.sendRedirect("ressource?action=new");

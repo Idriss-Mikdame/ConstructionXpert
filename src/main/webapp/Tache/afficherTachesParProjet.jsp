@@ -171,9 +171,7 @@
             border-bottom: none;
         }
 
-        .task-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+
 
         /* Buttons and Actions */
         .btn {

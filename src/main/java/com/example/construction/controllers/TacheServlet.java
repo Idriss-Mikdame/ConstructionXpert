@@ -72,7 +72,7 @@ public class TacheServlet extends HttpServlet {
                     afficherTachesParProjet(request, response);
                     break;
                 case "ajouterRessource":
-//                    ajouterRessourcetoTache(request, response);
+                    ajouterRessourcetoTache(request, response);
                     break;
                 case "supprimerRessource":
                     supprimerRessourcetoTache(request, response);
@@ -146,7 +146,6 @@ public class TacheServlet extends HttpServlet {
             tacheDAO.supprimerTache(id);
             response.sendRedirect("tache?action=parProjet&projet_id=" + projet_id);
         } else {
-            // Handle the case where the task is not found (e.g., display an error message)
             response.sendRedirect("tache?action=afficher"); // Redirect to task list or error page
         }
     }
@@ -167,13 +166,13 @@ public class TacheServlet extends HttpServlet {
         request.getRequestDispatcher("/Tache/afficherTachesParProjet.jsp").forward(request, response);
     }
 
-//    public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
-//        int tache_id = Integer.parseInt(request.getParameter("id_TA"));
-//        int ressource_id = Integer.parseInt(request.getParameter("projet_id"));
-//        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
-//        tacheRessourceDAO.ajouteTacheRessource(tache_id, ressource_id);
-//        response.sendRedirect("tache?action=afficher");
-//    }
+    public void  ajouterRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
+        int tache_id = Integer.parseInt(request.getParameter("id_TA"));
+        int ressource_id = Integer.parseInt(request.getParameter("projet_id"));
+        TacheRessourceDAO tacheRessourceDAO = new TacheRessourceDAO();
+        tacheRessourceDAO.ajouterRessourcedeTache(tache_id,ressource_id);
+        response.sendRedirect("tache?action=afficher");
+    }
     private void supprimerRessourcetoTache(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ClassNotFoundException {
         int tache_id = Integer.parseInt(request.getParameter("tache_id"));
         int ressource_id = Integer.parseInt(request.getParameter("projet_id"));

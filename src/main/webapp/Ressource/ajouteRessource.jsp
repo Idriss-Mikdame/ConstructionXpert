@@ -223,19 +223,19 @@
   <div class="content">
     <div class="input-box">
         <label>ajouter un Ressource : </label><br>
-        <input type="text" name="nom" ><br>
+        <input type="text" name="nom"  placeholder="Ajouter ressource"><br>
     </div>
     <div class="input-box">
         <label>Types :</label><br>
-        <input type="text" name="type"><br>
+        <input type="text" name="type" placeholder="Types"><br>
     </div>
     <div class="input-box">
       <label>quantite :</label><br>
-      <input type="number" name="quantite" ><br>
+      <input type="number" name="quantite" placeholder="Quantite"><br>
     </div>
     <div class="input-box">
       <label>Nom fournisseur :</label><br>
-      <input type="text" name="fournisseur" ><br><br>
+      <input type="text" name="fournisseur" placeholder="nom fournisseur"><br><br>
     </div>
     <div class="button-container">
       <button type="submit">Ajouter</button>

@@ -91,31 +91,48 @@ public class TacheRessourceServlet extends HttpServlet {
         int id_ressource = Integer.parseInt(request.getParameter("id_ressource"));
         int id_tache = Integer.parseInt(request.getParameter("id_tache"));
         tacheRessourceDAO.supprimerResourceFromtache(id_ressource,id_tache);
-        response.sendRedirect("tacheRessource?action=listeTacheRessource");
-
+        response.sendRedirect("tacheRessource?action=afficherTacheRessource&id=" + id_tache);
     }
 
     private void AjouterTacheRessource(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int id_ressource = Integer.parseInt(request.getParameter("id_ressource"));
-        int id_tache = Integer.parseInt(request.getParameter("id_tache"));
-
         try {
+            int id_ressource = Integer.parseInt(request.getParameter("id_ressource"));
+            int id_tache = Integer.parseInt(request.getParameter("id_tache_select")); // Changed from id_tache to id_tache_select
+
             tacheRessourceDAO.ajouterRessourcedeTache(id_ressource, id_tache);
-            response.sendRedirect("tache?action=parProjet&projet_id=" + tacheDAO.trouverParId(id_tache).getProjet_id());
+
+            // Redirect to the task's resource view
+            response.sendRedirect("tacheRessource?action=afficherTacheRessource&id=" + id_tache);
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "ID de tâche ou ressource invalide");
+            Showform(request, response);
         } catch (SQLException e) {
             request.setAttribute("error", "Erreur lors de l'ajout de la ressource: " + e.getMessage());
             Showform(request, response);
         }
     }
+    private void Showform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int id_tache = 0;
+            if (request.getParameter("id_tache") != null) {
+                id_tache = Integer.parseInt(request.getParameter("id_tache"));
+            }
 
-    private void Showform(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id_tache = Integer.parseInt(request.getParameter("id_tache"));
-        Tache tache = tacheDAO.trouverParId(id_tache);
-        List<Ressource> ressources = ressourceDAO.afficherRessource();
+            Tache tache = null;
+            if (id_tache > 0) {
+                tache = tacheDAO.trouverParId(id_tache);
+            }
 
-        request.setAttribute("tache", tache);
-        request.setAttribute("ressources", ressources);
-        request.getRequestDispatcher("/TacheRessource/ajouterTacheRessource.jsp").forward(request,response);
+            List<Ressource> ressources = ressourceDAO.afficherRessource();
+            List<Tache> taches = tacheDAO.afficherTaches();
+
+            request.setAttribute("tache", tache);
+            request.setAttribute("taches", taches);
+            request.setAttribute("ressources", ressources);
+            request.getRequestDispatcher("/TacheRessource/ajouterTacheRessource.jsp").forward(request,response);
+        } catch (NumberFormatException | SQLException e) {
+            throw new ServletException("Error in Showform: " + e.getMessage(), e);
+        }
     }
 
     private void ListTacheRessource(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

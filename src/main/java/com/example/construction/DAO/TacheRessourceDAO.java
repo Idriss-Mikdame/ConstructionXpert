@@ -64,11 +64,13 @@ public class TacheRessourceDAO {
     public List<Integer> selectAllTacheRessourceParsid(int id_tache) throws SQLException {
         ArrayList<Integer> ressourceid = new ArrayList<Integer>();
         String query = "SELECT * FROM Tache_Ressource WHERE id_tache = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setInt(1, id_tache);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            ressourceid.add(resultSet.getInt("id_ressource"));
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id_tache);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    ressourceid.add(resultSet.getInt("id_ressource"));
+                }
+            }
         }
         return ressourceid;
     }

@@ -184,6 +184,7 @@
             cursor: pointer;
             text-transform: uppercase;
             transition: 1s;
+            margin-left: 300px;
 
         }
         .button-container button:hover{

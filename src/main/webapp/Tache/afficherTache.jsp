@@ -248,7 +248,7 @@
                         <div class="action-buttons">
                             <button class="btn btn-primary"><a href="tache?action=edit&id=${tache.id_TA}">Modifier</a></button>
                             <button class="btn btn-danger"><a href="tache?action=supprimer&id=${tache.id_TA}" class="delete">Supprimer</a></button>
-                            <button class="btn btn-success"><a href="tacheRessource?action=afficherAttachForm&id_tache=${tache.id_TA}">Ajouter Ressource</a></button>
+                            <button class="btn btn-primary"><a href="tacheRessource?action=afficherAttachForm&id_tache=${tache.id_TA}">Ajouter Ressource</a></button>
                         </div>
                     </td>
                 </tr>

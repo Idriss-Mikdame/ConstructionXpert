@@ -11,14 +11,23 @@
 <div class="container mt-4">
     <h1>Ajouter une Ressource à une Tâche</h1>
 
-    <form action="tacheRessource?action=ajouterTacheRessource" method="post">
+    <c:if test="${not empty error}">
+        <div class="alert alert-danger">${error}</div>
+    </c:if>
 
+    <form action="tacheRessource?action=ajouterTacheRessource" method="post">
+        <input type="hidden" name="id_tache" value="${tache.id_TA}">
 
         <div class="form-group">
-            <label for="id_tache">Tâche :</label>
-            <input type="text" class="form-control" id="id_tache" name="id_tache" value="${tache.id_TA}" readonly>
-            <input type="hidden" name="id_tache" value="${tache.id_TA}">
-            <p>${tache.description}</p>
+            <label for="id_tache_select">Tâche :</label>
+            <select class="form-control" id="id_tache_select" name="id_tache_select" required>
+                <option value="">Sélectionnez une tâche</option>
+                <c:forEach items="${taches}" var="t">
+                    <option value="${t.id_TA}" ${t.id_TA == tache.id_TA ? 'selected' : ''}>
+                            ${t.description} - Du ${t.date_debut} au ${t.date_fin}
+                    </option>
+                </c:forEach>
+            </select>
         </div>
 
         <div class="form-group">
@@ -32,7 +41,14 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Ajouter</button>
-        <a href="tacheRessource?action=listeTacheRessource" class="btn btn-secondary">Annuler</a>
+        <c:choose>
+            <c:when test="${not empty tache}">
+                <a href="tacheRessource?action=afficherTacheRessource&id=${tache.id_TA}" class="btn btn-secondary">Annuler</a>
+            </c:when>
+            <c:otherwise>
+                <a href="tacheRessource?action=listeTacheRessource" class="btn btn-secondary">Annuler</a>
+            </c:otherwise>
+        </c:choose>
     </form>
 </div>
 

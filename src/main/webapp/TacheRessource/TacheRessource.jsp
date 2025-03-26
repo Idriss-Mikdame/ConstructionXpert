@@ -9,17 +9,16 @@
 </head>
 <body>
 <div class="container mt-4">
-    <h1>Ressources de la Tâche: ${tache.nom}</h1>
+    <h1>Ressources de la Tâche: ${tache.description}</h1>
 
     <div class="card mb-4">
         <div class="card-header">
             Détails de la Tâche
         </div>
         <div class="card-body">
-            <h5 class="card-title">${tache.nom}</h5>
             <p class="card-text"><strong>Description:</strong> ${tache.description}</p>
-            <p class="card-text"><strong>Date de début:</strong> ${tache.dateDebut}</p>
-            <p class="card-text"><strong>Date de fin:</strong> ${tache.dateFin}</p>
+            <p class="card-text"><strong>Date de début:</strong> ${tache.date_debut}</p>
+            <p class="card-text"><strong>Date de fin:</strong> ${tache.date_fin}</p>
         </div>
     </div>
 
@@ -44,11 +43,11 @@
             <tbody>
             <c:forEach items="${tacheRessource}" var="ressource">
                 <tr>
-                    <td>${ressource.id}</td>
+                    <td>${ressource.id_RESS}</td>
                     <td>${ressource.nom}</td>
-                    <td>${ressource.type}</td>
+                    <td>${ressource.types}</td>
                     <td>
-                        <a href="tacheRessource?action=supprimerTacheRessource&id_ressource=${ressource.id}&id_tache=${tache.id}"
+                        <a href="tacheRessource?action=supprimerTacheRessource&id_ressource=${ressource.id_RESS}&id_tache=${tache.id_TA}"
                            class="btn btn-danger btn-sm"
                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ressource de la tâche?')">
                             Détacher
@@ -61,7 +60,7 @@
     </c:if>
 
     <div class="mt-3">
-        <a href="tacheRessource?action=afficherAttachForm" class="btn btn-primary">Ajouter une Ressource</a>
+        <a href="tacheRessource?action=afficherAttachForm&id_tache=${tache.id_TA}" class="btn btn-primary">Ajouter une Ressource</a>
         <a href="tacheRessource?action=listeTacheRessource" class="btn btn-secondary">Retour à la Liste</a>
     </div>
 </div>

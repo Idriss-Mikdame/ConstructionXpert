@@ -48,6 +48,7 @@ public class TacheDAO {
         return taches;
     }
 
+
     public List<Tache> afficherTachesParProjet(int projet_id) throws SQLException {
         List<Tache> taches = new ArrayList<>();
         String sql = "SELECT * FROM tache WHERE projet_id = ?";
@@ -106,56 +107,56 @@ public class TacheDAO {
         }
         return null;
     }
-    public void ajouterRessourcedeTache(int id_ressource,int id_tache,double quantiteUtilise) throws SQLException {
-    String sql = "SELECT quantite FROM Ressource WHERE id_RESS = ?";
-    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-        preparedStatement.setInt(1, id_ressource);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            int quantitéactuelle = resultSet.getInt("quantite");
-            if (quantitéactuelle < quantiteUtilise) {
-                throw new SQLException("Quantité insuffisante en stock pour la ressource ID " + id_ressource + ". Disponible : " + quantitéactuelle);
-            }
-        } else {
-            throw new SQLException("Ressource ID " + id_ressource + " non trouvée");
-        }}
-    String Updatequery = "UPDATE Ressource SET quantite = quantite - ? WHERE id_RESS = ?";
-    try (PreparedStatement preparedStatement = connection.prepareStatement(Updatequery)) {
-        preparedStatement.setDouble(1, quantiteUtilise);
-        preparedStatement.setInt(2, id_ressource);
-        preparedStatement.executeUpdate();
-    }
-    String insertsql = "INSERT INTO Tache_Ressource (id_Tache, id_Ressource,quantiteUtilise) VALUES (?, ?,?) "+
-            "ON DUPLICATE KEY UPDATE quantiteUtilise = quantiteUtilise + ?";;
-    try (PreparedStatement preparedStatement = connection.prepareStatement(insertsql)) {
-        preparedStatement.setInt(1, id_tache);
-        preparedStatement.setInt(2, id_ressource);
-        preparedStatement.setDouble(3, quantiteUtilise);
-        preparedStatement.setDouble(4, quantiteUtilise);
-        preparedStatement.executeUpdate();
-    }}
-    public List<Ressource> TrouverRessourcrsParIdTache(int id_Tache) throws SQLException {
-        List<Ressource> ressources = new ArrayList<>();
-        String sql = "SELECT r.*, tr.quantiteUtilise " +
-                "FROM Ressource r " +
-                "JOIN Tache_Ressource tr ON r.id_RESS = tr.id_ressource " +
-                "WHERE tr.id_tache= ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id_Tache);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-               Ressource ressource = new Ressource();
-               ressource.setId_RESS(resultSet.getInt("id_RESS"));
-               ressource.setNom(resultSet.getString("nom"));
-               ressource.setTypes(resultSet.getString("types"));
-               ressource.setQuantite(resultSet.getDouble("quantite"));
-               ressource.setFournisseur(resultSet.getString("fournisseur"));
-               ressource.setQuantityUsed(resultSet.getInt("quantityUsed"));
-               ressources.add(ressource);
-            }
-        }
-        return ressources;
-    }
+//    public void ajouterRessourcedeTache(int id_ressource,int id_tache,double quantiteUtilise) throws SQLException {
+//    String sql = "SELECT quantite FROM Ressource WHERE id_RESS = ?";
+//    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//        preparedStatement.setInt(1, id_ressource);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//        if (resultSet.next()) {
+//            int quantitéactuelle = resultSet.getInt("quantite");
+//            if (quantitéactuelle < quantiteUtilise) {
+//                throw new SQLException("Quantité insuffisante en stock pour la ressource ID " + id_ressource + ". Disponible : " + quantitéactuelle);
+//            }
+//        } else {
+//            throw new SQLException("Ressource ID " + id_ressource + " non trouvée");
+//        }}
+//    String Updatequery = "UPDATE Ressource SET quantite = quantite - ? WHERE id_RESS = ?";
+//    try (PreparedStatement preparedStatement = connection.prepareStatement(Updatequery)) {
+//        preparedStatement.setDouble(1, quantiteUtilise);
+//        preparedStatement.setInt(2, id_ressource);
+//        preparedStatement.executeUpdate();
+//    }
+//    String insertsql = "INSERT INTO Tache_Ressource (id_Tache, id_Ressource,quantiteUtilise) VALUES (?, ?,?) "+
+//            "ON DUPLICATE KEY UPDATE quantiteUtilise = quantiteUtilise + ?";;
+//    try (PreparedStatement preparedStatement = connection.prepareStatement(insertsql)) {
+//        preparedStatement.setInt(1, id_tache);
+//        preparedStatement.setInt(2, id_ressource);
+//        preparedStatement.setDouble(3, quantiteUtilise);
+//        preparedStatement.setDouble(4, quantiteUtilise);
+//        preparedStatement.executeUpdate();
+//    }}
+//    public List<Ressource> TrouverRessourcrsParIdTache(int id_Tache) throws SQLException {
+//        List<Ressource> ressources = new ArrayList<>();
+//        String sql = "SELECT r.*, tr.quantiteUtilise " +
+//                "FROM Ressource r " +
+//                "JOIN Tache_Ressource tr ON r.id_RESS = tr.id_ressource " +
+//                "WHERE tr.id_tache= ?";
+//        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//            preparedStatement.setInt(1, id_Tache);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//               Ressource ressource = new Ressource();
+//               ressource.setId_RESS(resultSet.getInt("id_RESS"));
+//               ressource.setNom(resultSet.getString("nom"));
+//               ressource.setTypes(resultSet.getString("types"));
+//               ressource.setQuantite(resultSet.getDouble("quantite"));
+//               ressource.setFournisseur(resultSet.getString("fournisseur"));
+//               ressource.setQuantityUsed(resultSet.getInt("quantityUsed"));
+//               ressources.add(ressource);
+//            }
+//        }
+//        return ressources;
+//    }
 
 }
 
